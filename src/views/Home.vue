@@ -47,7 +47,7 @@ export default {
   methods: {
     handled(alert) {
       db.collection("alerts")
-        .doc(alert[".key"])
+        .doc(alert.id)
         .update({
           handled: true
         });

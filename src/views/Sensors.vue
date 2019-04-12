@@ -6,7 +6,7 @@
     </v-toolbar>
     <v-data-table :headers="headers" :items="sensors" class="elevation-1">
       <template v-slot:items="props">
-        <td>{{ props.item['.key'] }}</td>
+        <td>{{ props.item.id }}</td>
         <td>{{ props.item.bedNo }}</td>
         <td>{{ props.item.createdAt.toDate() }}</td>
       </template>
@@ -23,9 +23,9 @@ export default {
     return {
       sensors: [],
       headers: [
-        { text: "Sensor", value: ".key" },
+        { text: "Sensor", value: "id" },
         { text: "Bed", value: "bed" },
-        { text: "Added At", value: "createdAt" },
+        { text: "Added At", value: "createdAt" }
       ]
     };
   },
@@ -35,6 +35,6 @@ export default {
         ref: db.collection("sensors")
       }
     };
-  },
+  }
 };
 </script>

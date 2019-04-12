@@ -3,7 +3,9 @@ import VueFirestore from "vue-firestore";
 import firebase from "firebase/app";
 import "firebase/firestore";
 
-Vue.use(VueFirestore);
+Vue.use(VueFirestore, {
+  key: "id"
+});
 
 const config = {
   apiKey: "AIzaSyAX93ua_7PjfOlKcjgv3oTksxmakxFT-tU",

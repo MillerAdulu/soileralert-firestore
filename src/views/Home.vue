@@ -7,10 +7,10 @@
     <v-data-table :headers="headers" :items="alerts" class="elevation-1">
       <template v-slot:items="props">
         <td>{{ props.item.bed }}</td>
-        <td class="text-xs-right">{{ props.item.humidity }}</td>
-        <td class="text-xs-right">{{ props.item.temp }}</td>
-        <td class="text-xs-right">{{ props.item.time.toDate() }}</td>
-        <td class="text-xs-right">
+        <td>{{ props.item.humidity }}</td>
+        <td>{{ props.item.temp }}</td>
+        <td>{{ props.item.time.toDate() }}</td>
+        <td>
           <v-btn @click="handled(props.item)" color="green" class="white--text"
             >Handled!</v-btn
           >

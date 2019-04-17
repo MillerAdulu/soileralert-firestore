@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-toolbar flat color="white">
-      <v-toolbar-title>Soiler Alerts</v-toolbar-title>
+      <v-toolbar-title>Previous Alerts</v-toolbar-title>
       <v-divider class="mx-2" inset vertical></v-divider>
     </v-toolbar>
     <v-data-table :headers="headers" :items="alerts" class="elevation-1">
@@ -10,11 +10,6 @@
         <td>{{ props.item.humidity }}</td>
         <td>{{ props.item.gas }}</td>
         <td>{{ props.item.time.toDate() }}</td>
-        <td>
-          <v-btn @click="handled(props.item)" color="green" class="white--text"
-            >Handled!</v-btn
-          >
-        </td>
       </template>
     </v-data-table>
   </div>
@@ -24,7 +19,7 @@
 import { db } from "@/plugins/firebase";
 
 export default {
-  name: "Home",
+  name: "Previous",
   data() {
     return {
       alerts: [],
@@ -32,8 +27,7 @@ export default {
         { text: "Bed", value: "bed" },
         { text: "Humidity", value: "humidity" },
         { text: "Gas", value: "gas" },
-        { text: "Time", value: "time" },
-        { text: "Actons", value: "action" }
+        { text: "Time", value: "time" }
       ]
     };
   },

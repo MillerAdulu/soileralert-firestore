@@ -61,7 +61,8 @@ export default {
       drawer: null,
       items: [
         { icon: "add_alert", text: "Alerts", name: "home" },
-        { icon: "settings", text: "Sensors", name: "sensors" }
+        { icon: "settings", text: "Sensors", name: "sensors" },
+        { icon: "list", text: "Previous Alerts", name: "previous" }
       ]
     };
   },

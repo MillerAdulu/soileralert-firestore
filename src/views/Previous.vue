@@ -9,7 +9,6 @@
         <td>{{ props.item.bed }}</td>
         <td>{{ props.item.humidity }}</td>
         <td>{{ props.item.gas }}</td>
-        <td>{{ props.item.time.toDate() }}</td>
       </template>
     </v-data-table>
   </div>
@@ -26,26 +25,12 @@ export default {
       headers: [
         { text: "Bed", value: "bed" },
         { text: "Humidity", value: "humidity" },
-        { text: "Gas", value: "gas" },
-        { text: "Time", value: "time" }
+        { text: "Gas", value: "gas" }
       ]
     };
   },
-  firestore() {
-    return {
-      alerts: {
-        ref: db.collection("alerts").where("handled", "==", false)
-      }
-    };
-  },
-  methods: {
-    handled(alert) {
-      db.collection("alerts")
-        .doc(alert.id)
-        .update({
-          handled: true
-        });
-    }
+  firebase: {
+    alerts: db.ref("alerts")
   }
 };
 </script>

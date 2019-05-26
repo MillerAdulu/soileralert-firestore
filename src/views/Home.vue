@@ -9,7 +9,6 @@
         <td>{{ props.item.bed }}</td>
         <td>{{ props.item.humidity }}</td>
         <td>{{ props.item.gas }}</td>
-        <td>{{ props.item.time.toDate() }}</td>
         <td>
           <v-btn @click="handled(props.item)" color="green" class="white--text"
             >Handled!</v-btn
@@ -32,25 +31,21 @@ export default {
         { text: "Bed", value: "bed" },
         { text: "Humidity", value: "humidity" },
         { text: "Gas", value: "gas" },
-        { text: "Time", value: "time" },
         { text: "Actons", value: "action" }
       ]
     };
   },
-  firestore() {
-    return {
-      alerts: {
-        ref: db.collection("alerts").where("handled", "==", false)
-      }
-    };
+  firebase: {
+    alerts: db
+      .ref("alerts")
+      .orderByChild("handled")
+      .equalTo(false)
   },
   methods: {
     handled(alert) {
-      db.collection("alerts")
-        .doc(alert.id)
-        .update({
-          handled: true
-        });
+      this.$firebaseRefs.alerts.child(alert[".key"]).update({
+        handled: true
+      });
     }
   }
 };

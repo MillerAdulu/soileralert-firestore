@@ -8,7 +8,6 @@
       <template v-slot:items="props">
         <td>{{ props.item.id }}</td>
         <td>{{ props.item.bedNo }}</td>
-        <td>{{ props.item.createdAt.toDate() }}</td>
       </template>
     </v-data-table>
   </div>
@@ -29,12 +28,8 @@ export default {
       ]
     };
   },
-  firestore() {
-    return {
-      sensors: {
-        ref: db.collection("sensors")
-      }
-    };
+  firebase: {
+    sensors: db.ref("sensors")
   }
 };
 </script>
